@@ -29,17 +29,40 @@ export default function Body() {
                         {A.name}
                     </Seats>
                 )}
-
             </SeatsContainer>
+            <SubtitleContainer>
+                <Subtitle>
+                    <Seats></Seats>
+                    <p>Selecionado</p>
+                </Subtitle>
+                <Subtitle>
+                    <Seats></Seats>
+                    <p>Disponível</p>
+                </Subtitle>
+                <Subtitle>
+                    <Seats></Seats>
+                    <p>Indisponível</p>
+                </Subtitle>
+            </SubtitleContainer>
+            <InputContainer>
+                <p>Nome do comprador:</p>
+                <input placeholder='Digite seu nome...'></input>
+                <p>CPF do comprador:</p>
+                <input placeholder="Digite seu CPF..."></input>
+            </InputContainer>
+
+            <Button>Reservar assento(s)</Button>
 
         </BodyContainer>
     )
 }
 
 const BodyContainer = styled.div`
+    height:100%;
     display: flex;
     margin-top: 67px;
     flex-direction: column;
+    align-items:center;
     
     h1{
         display: flex;
@@ -60,6 +83,7 @@ const BodyContainer = styled.div`
 const PosterContainer = styled.div`
     display:flex;
     width:375px;
+    flex-wrap: wrap;
 `
 
 const ImgContainer = styled.div`
@@ -105,5 +129,74 @@ const Seats = styled.div`
     font-weight: 400;
     font-size: 11px;
     letter-spacing: 0.04em;
+
+`
+
+const SubtitleContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    width: 375px;
+
+    p{
+        font-family: 'Roboto';
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 15px;
+        color: #4E5A65;
+        margin-top: -10px;
+    }
+`
+const Subtitle = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+`
+
+const InputContainer = styled.div`
+    margin-top: 42px;
+    width: 327px;
+
+    input{
+
+        height: 51px;
+        width: 327px;
+        border-radius: 3px;
+        font-family: 'Roboto';
+        font-style: italic;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        padding-left: 18px;
+        border: 1px solid #AFAFAF; color:#AFAFAF;
+        margin-top: 3px;
+        margin-bottom: 7px;
+    }
+    p{
+        font-family: 'Roboto';
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        text-align: left;
+
+    }
+`
+const Button = styled.div`
+    margin-top: 57px;
+    height: 42px;
+    width: 225px;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #E8833A;
+    border-radius: 3px;
 
 `
