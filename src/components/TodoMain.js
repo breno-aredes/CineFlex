@@ -1,17 +1,17 @@
-import styled from "styled-components";
-import Header from "../components/Header";
-import FILMES from "../mock";
-import GlobalStyle from "../style/GlobalStyle";
+import styled from "styled-components"
+import Header from "../components/Header"
+import GlobalStyle from "../style/GlobalStyle"
+import Body from "./Body";
 
 
 export default function TodoMain() {
 
-    alert(FILMES[1].title)
     return (
         <ScreenContainer>
 
             <GlobalStyle />
             <Header />
+            < Body />
 
         </ScreenContainer>
     );
@@ -21,5 +21,7 @@ export default function TodoMain() {
 const ScreenContainer = styled.div`
   background-color: #E5E5E5;
   width: 100%;
-  height: 100vw;
+  height:100%;
+  display: flex;
+  justify-content:center;
   `
