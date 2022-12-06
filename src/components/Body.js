@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import FILMES from "../mock"
+import ASSENTOS from "../mock1"
 
 export default function Body() {
+
     return (
         <BodyContainer>
 
@@ -18,6 +20,17 @@ export default function Body() {
                 )}
 
             </PosterContainer>
+
+            <h1>Selecione os assentos</h1>
+
+            <SeatsContainer>
+                {ASSENTOS.seats.map((A) =>
+                    <Seats>
+                        {A.name}
+                    </Seats>
+                )}
+
+            </SeatsContainer>
 
         </BodyContainer>
     )
@@ -46,6 +59,7 @@ const BodyContainer = styled.div`
 
 const PosterContainer = styled.div`
     display:flex;
+    width:375px;
 `
 
 const ImgContainer = styled.div`
@@ -64,4 +78,32 @@ const ImgContainer = styled.div`
         width: 129px;
         height: 193px;
     }
+`
+
+const SeatsContainer = styled.div`
+    display:flex;
+    flex-wrap: wrap;
+    width: 375px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 17px;
+`
+
+const Seats = styled.div`
+    height: 26px;
+    width: 26px;
+    border-radius: 15px;
+    margin-right:7px;
+    margin-bottom:18px;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+
 `
