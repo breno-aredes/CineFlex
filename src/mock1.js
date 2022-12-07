@@ -237,7 +237,7 @@ const ASSENTOS = {
         {
             "id": 45,
             "name": "45",
-            "isAvailable": true,
+            "isAvailable": false,
         },
         {
             "id": 46,
