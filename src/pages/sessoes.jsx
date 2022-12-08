@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Sessions() {
   const movie = useParams();
@@ -19,7 +20,7 @@ export default function Sessions() {
   }, []);
 
   if (session === undefined) {
-    return <Loading>...carregando</Loading>;
+    return;
   }
 
   return (
@@ -33,7 +34,13 @@ export default function Sessions() {
           </DateAndDay>
           <ContainerButtons>
             {S.showtimes.map((show) => (
-              <Button key={show.id}>{show.name}</Button>
+              <Link
+                key={show.id}
+                to={`/assentos/${show.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Button>{show.name}</Button>
+              </Link>
             ))}
           </ContainerButtons>
         </div>
@@ -82,6 +89,7 @@ const ContainerButtons = styled.div`
   width: 375px;
   margin-left: 24px;
 `;
+
 const Button = styled.div`
   height: 43px;
   width: 82px;
@@ -98,8 +106,4 @@ const Button = styled.div`
   background-color: #e8833a;
   border-radius: 3px;
   margin-right: 8px;
-`;
-
-const Loading = styled.div`
-  margin-top: 100px;
 `;

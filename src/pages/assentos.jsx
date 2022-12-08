@@ -1,15 +1,38 @@
 import styled from "styled-components";
 import ASSENTOS from "../mock1";
 import Footer from "../components/footer";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export default function Seats() {
+  const sessions = useParams();
+
+  const [seat, setSeat] = useState(undefined);
+
+  useEffect(() => {
+    const request = axios.get(
+      `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessions.idSession}/seats`
+    );
+
+    request.then((answer) => {
+      setSeat(answer.data);
+    });
+  }, []);
+
+  if (seat === undefined) {
+    return;
+  }
+
   return (
-    <>
+    <Container>
       <h1>Selecione o(s) assento(s)</h1>
 
       <SeatsContainer>
-        {ASSENTOS.seats.map((A) => (
-          <Seat isAvailable={A.isAvailable}>{A.name}</Seat>
+        {seat.seats.map((s) => (
+          <Seat key={s.id} isAvailable={s.isAvailable}>
+            {s.name}
+          </Seat>
         ))}
       </SeatsContainer>
 
@@ -36,11 +59,32 @@ export default function Seats() {
       </InputContainer>
 
       <Button>Reservar assento(s)</Button>
-
-      <Footer />
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  margin-top: 67px;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 374px;
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #293845;
+  }
+`;
 
 const SeatsContainer = styled.div`
   display: flex;
