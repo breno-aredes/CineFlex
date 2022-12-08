@@ -6,8 +6,8 @@ import { useParams } from "react-router";
 
 export default function Seats() {
   const sessions = useParams();
-
   const [seat, setSeat] = useState(undefined);
+  const [selectedSeat, setSelectedSeat] = useState([]);
 
   useEffect(() => {
     const request = axios.get(
@@ -23,13 +23,24 @@ export default function Seats() {
     return;
   }
 
+  function clickedSeat(id) {
+    setSelectedSeat([...selectedSeat, id]);
+  }
+
   return (
     <Container>
       <h1>Selecione o(s) assento(s)</h1>
 
       <SeatsContainer>
         {seat.seats.map((s) => (
-          <Seat key={s.id} isAvailable={s.isAvailable}>
+          <Seat
+            key={s.id}
+            isAvailable={
+              s.isAvailable && `${selectedSeat.includes(s.id) && "selected"}`
+            }
+            onClick={() => clickedSeat(s.id)}
+            disabled={!s.isAvailable || selectedSeat.includes(s.id)}
+          >
             {s.name}
           </Seat>
         ))}
@@ -101,7 +112,7 @@ const SeatsContainer = styled.div`
   padding-right: 17px;
 `;
 
-const Seat = styled.div`
+const Seat = styled.button`
   height: 26px;
   width: 26px;
   border-radius: 15px;
@@ -123,6 +134,7 @@ const Seat = styled.div`
   font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.04em;
+  color: #293845;
 `;
 
 const SubtitleContainer = styled.div`
