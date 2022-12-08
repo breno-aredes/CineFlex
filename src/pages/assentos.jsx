@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ASSENTOS from "../mock1";
 import Footer from "../components/footer";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -59,6 +58,12 @@ export default function Seats() {
       </InputContainer>
 
       <Button>Reservar assento(s)</Button>
+      <Footer
+        title={seat.movie.title}
+        img={seat.movie.posterURL}
+        day={seat.day.weekday}
+        hour={seat.name}
+      />
     </Container>
   );
 }
@@ -186,4 +191,5 @@ const Button = styled.div`
   color: #ffffff;
   background-color: #e8833a;
   border-radius: 3px;
+  margin-bottom: 150px;
 `;

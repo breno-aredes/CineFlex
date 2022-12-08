@@ -1,5 +1,5 @@
 import Home from "../pages/home";
-import Header from "./Header";
+import Header from "./header";
 import GlobalStyle from "../style/GlobalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Seats from "../pages/assentos";

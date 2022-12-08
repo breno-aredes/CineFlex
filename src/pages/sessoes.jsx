@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/footer";
 
 export default function Sessions() {
   const movie = useParams();
@@ -26,25 +27,27 @@ export default function Sessions() {
   return (
     <SessionsContainer>
       <h1>Selecione o horário</h1>
-
-      {session.days.map((S) => (
-        <div key={S.id}>
-          <DateAndDay>
-            {S.weekday} - {S.date}
-          </DateAndDay>
-          <ContainerButtons>
-            {S.showtimes.map((show) => (
-              <Link
-                key={show.id}
-                to={`/assentos/${show.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button>{show.name}</Button>
-              </Link>
-            ))}
-          </ContainerButtons>
-        </div>
-      ))}
+      <Container>
+        {session.days.map((S) => (
+          <div key={S.id}>
+            <DateAndDay>
+              {S.weekday} - {S.date}
+            </DateAndDay>
+            <ContainerButtons>
+              {S.showtimes.map((show) => (
+                <Link
+                  key={show.id}
+                  to={`/assentos/${show.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button>{show.name}</Button>
+                </Link>
+              ))}
+            </ContainerButtons>
+          </div>
+        ))}
+      </Container>
+      <Footer title={session.title} img={session.posterURL} />
     </SessionsContainer>
   );
 }
@@ -70,6 +73,10 @@ const SessionsContainer = styled.div`
     text-align: center;
     color: #293845;
   }
+`;
+
+const Container = styled.div`
+  margin-bottom: 147px;
 `;
 
 const DateAndDay = styled.p`

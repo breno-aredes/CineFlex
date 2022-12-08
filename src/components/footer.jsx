@@ -1,29 +1,34 @@
 import styled from "styled-components";
 
-export default function Footer() {
+export default function Footer(props) {
+  const { title, img, day, hour } = props;
+
   return (
-    <>
-      <FooterContainer>
-        <ImgContainer>
-          <img src="https://br.web.img2.acsta.net/r_1920_1080/pictures/14/04/09/13/23/045814.jpg" />
-        </ImgContainer>
-        <TextContainer>
-          <p>nome do filme </p>
-          <p>dia-da-semana e hora </p>
-        </TextContainer>
-      </FooterContainer>
-    </>
+    <FooterContainer>
+      <ImgContainer>
+        <img src={img} />
+      </ImgContainer>
+      <TextContainer>
+        <p>{title} </p>
+        <p>{day ? `${day} - ${hour}` : ""}</p>
+      </TextContainer>
+    </FooterContainer>
   );
 }
 
 const FooterContainer = styled.div`
   height: 117px;
-  width: 375px;
+  width: 100%;
   background-color: #dfe6ed;
   border: 1px solid #9eadba;
   margin-top: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 `;
 const ImgContainer = styled.div`
   display: flex;
