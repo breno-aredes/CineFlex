@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import FILMES from "../mock";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -23,7 +23,9 @@ export default function Home() {
       <PosterContainer>
         {movies.map((m) => (
           <ImgContainer>
-            <img src={m.posterURL} />
+            <Link to={`/sessoes/${m.id}`}>
+              <img src={m.posterURL} />
+            </Link>
           </ImgContainer>
         ))}
       </PosterContainer>
