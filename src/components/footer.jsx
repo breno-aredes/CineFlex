@@ -37,7 +37,6 @@ const ImgContainer = styled.div`
   margin-right: 14px;
   border-radius: 3px;
   margin-left: 10px;
-
   img {
     width: 48px;
     height: 72px;

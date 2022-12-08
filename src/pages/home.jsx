@@ -4,7 +4,7 @@ import Seats from "./assentos";
 import Sessions from "./sessoes";
 import Success from "./Sucesso";
 
-export default function Body() {
+export default function home() {
   return (
     <BodyContainer>
       <h1>Selecione o filme</h1>

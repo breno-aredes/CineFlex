@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ASSENTOS from "../mock1";
-import Footer from "./footer";
+import Footer from "../components/footer";
 
 export default function Seats() {
   return (
