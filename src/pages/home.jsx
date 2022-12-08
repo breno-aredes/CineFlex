@@ -1,24 +1,32 @@
 import styled from "styled-components";
 import FILMES from "../mock";
-import Seats from "./assentos";
-import Sessions from "./sessoes";
-import Success from "./Sucesso";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function home() {
+export default function Home() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const request = axios.get(
+      "https://mock-api.driven.com.br/api/v8/cineflex/movies"
+    );
+
+    request.then((answer) => {
+      setMovies(answer.data);
+    });
+  }, []);
+
   return (
     <BodyContainer>
       <h1>Selecione o filme</h1>
 
       <PosterContainer>
-        {FILMES.map((F) => (
+        {movies.map((m) => (
           <ImgContainer>
-            <img src={F.posterURL} />
+            <img src={m.posterURL} />
           </ImgContainer>
         ))}
       </PosterContainer>
-      <Sessions />
-      <Seats />
-      <Success />
     </BodyContainer>
   );
 }
