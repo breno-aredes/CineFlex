@@ -4,13 +4,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
-export default function Seats() {
+export default function Seats(props) {
   const sessions = useParams();
   const [seat, setSeat] = useState(undefined);
   const [ids, setIds] = useState([]);
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const navigate = useNavigate();
+  const [seatName, setSeatName] = useState([]);
+
+  const { setDataSuccess } = props;
 
   useEffect(() => {
     const request = axios.get(
@@ -26,14 +29,22 @@ export default function Seats() {
     return;
   }
 
-  function clickedSeat(id) {
+  function clickedSeat(id, sName) {
     setIds([...ids, id]);
+    setSeatName([...seatName, sName]);
   }
 
   function buyerData(e) {
     e.preventDefault();
     const data = { ids, name, cpf };
-
+    setDataSuccess([
+      seatName,
+      name,
+      cpf,
+      seat.movie.title,
+      seat.name,
+      seat.day.date,
+    ]);
     const submit = axios.post(
       "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",
       data
@@ -51,7 +62,7 @@ export default function Seats() {
           <Seat
             key={s.id}
             isAvailable={s.isAvailable && `${ids.includes(s.id) && "selected"}`}
-            onClick={() => clickedSeat(s.id)}
+            onClick={() => clickedSeat(s.id, s.name)}
             disabled={!s.isAvailable || ids.includes(s.id)}
           >
             {s.name}

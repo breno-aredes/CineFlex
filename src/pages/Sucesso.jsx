@@ -1,16 +1,34 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-export default function Success() {
+export default function Success(props) {
+  const { dataSuccess } = props;
+
+  const cpf = dataSuccess[2]
+    .match(/.{1,3}/g)
+    .join(".")
+    .replace(/\.(?=[^.]*$)/, "-");
+
+  const navigate = useNavigate();
+
   return (
     <Container>
       <H1>Pedido feito com sucesso!</H1>
       <H2>Filme e sessão</H2>
-      <H3> filme hora</H3>
+      <H3>
+        {dataSuccess[3]}
+        <div>
+          {dataSuccess[5]} {dataSuccess[4]}
+        </div>
+      </H3>
       <H2>Ingressos</H2>
-      <H3>proltrona </H3>
+      {dataSuccess[0].map((d) => (
+        <H3 key={d}>poltrona {d}</H3>
+      ))}
       <H2>Comprador</H2>
-      <H3>nome cpf</H3>
-      <Button>Voltar pra Home</Button>
+      <H3>Nome: {dataSuccess[1]} </H3>
+      <H3>CPF: {cpf} </H3>
+      <Button onClick={() => navigate("/")}>Voltar pra Home</Button>
     </Container>
   );
 }
@@ -78,7 +96,8 @@ const H3 = styled.h3`
   line-height: 26px;
   color: #293845;
 `;
-const Button = styled.div`
+const Button = styled.button`
+  border: none;
   margin-top: 60px;
   height: 42px;
   width: 225px;
