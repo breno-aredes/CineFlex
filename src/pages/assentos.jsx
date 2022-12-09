@@ -53,6 +53,10 @@ export default function Seats(props) {
     submit.catch((err) => console.log(err.response.data));
   }
 
+  function clickedUnavailable() {
+    alert("Esse assento não está disponível");
+  }
+
   return (
     <Container>
       <h1>Selecione o(s) assento(s)</h1>
@@ -63,8 +67,12 @@ export default function Seats(props) {
             data-test="seat"
             key={s.id}
             isAvailable={s.isAvailable && `${ids.includes(s.id) && "selected"}`}
-            onClick={() => clickedSeat(s.id, s.name)}
-            disabled={!s.isAvailable || ids.includes(s.id)}
+            onClick={
+              s.isAvailable
+                ? () => clickedSeat(s.id, s.name)
+                : () => clickedUnavailable()
+            }
+            disabled={ids.includes(s.id)}
           >
             {s.name}
           </Seat>
