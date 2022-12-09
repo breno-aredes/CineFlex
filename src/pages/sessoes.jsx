@@ -29,7 +29,7 @@ export default function Sessions() {
       <h1>Selecione o horário</h1>
       <Container>
         {session.days.map((S) => (
-          <div key={S.id}>
+          <div key={S.id} data-test="movie-day">
             <DateAndDay>
               {S.weekday} - {S.date}
             </DateAndDay>
@@ -40,7 +40,7 @@ export default function Sessions() {
                   to={`/assentos/${show.id}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <Button>{show.name}</Button>
+                  <Button data-test="showtime">{show.name}</Button>
                 </Link>
               ))}
             </ContainerButtons>

@@ -14,21 +14,28 @@ export default function Success(props) {
   return (
     <Container>
       <H1>Pedido feito com sucesso!</H1>
-      <H2>Filme e sessão</H2>
-      <H3>
-        {dataSuccess[3]}
-        <div>
+      <div data-test="movie-info">
+        <H2>Filme e sessão</H2>
+        <H3>{dataSuccess[3]}</H3>
+        <H3>
           {dataSuccess[5]} {dataSuccess[4]}
-        </div>
-      </H3>
-      <H2>Ingressos</H2>
-      {dataSuccess[0].map((d) => (
-        <H3 key={d}>poltrona {d}</H3>
-      ))}
-      <H2>Comprador</H2>
-      <H3>Nome: {dataSuccess[1]} </H3>
-      <H3>CPF: {cpf} </H3>
-      <Button onClick={() => navigate("/")}>Voltar pra Home</Button>
+        </H3>
+      </div>
+
+      <div data-test="seats-info">
+        <H2>Ingressos</H2>
+        {dataSuccess[0].map((d) => (
+          <H3 key={d}>poltrona {d}</H3>
+        ))}
+      </div>
+      <div data-test="client-info">
+        <H2>Comprador</H2>
+        <H3>Nome: {dataSuccess[1]} </H3>
+        <H3>CPF: {cpf} </H3>
+      </div>
+      <Button data-test="go-home-btn" onClick={() => navigate("/")}>
+        Voltar pra Home
+      </Button>
     </Container>
   );
 }

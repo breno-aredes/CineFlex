@@ -60,6 +60,7 @@ export default function Seats(props) {
       <SeatsContainer>
         {seat.seats.map((s) => (
           <Seat
+            data-test="seat"
             key={s.id}
             isAvailable={s.isAvailable && `${ids.includes(s.id) && "selected"}`}
             onClick={() => clickedSeat(s.id, s.name)}
@@ -89,6 +90,7 @@ export default function Seats(props) {
         <InputContainer>
           <label htmlFor="name">Nome do comprador:</label>
           <input
+            data-test="client-name"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -97,6 +99,7 @@ export default function Seats(props) {
           ></input>
           <label htmlFor="cpf">CPF do comprador:</label>
           <input
+            data-test="client-cpf"
             id="cpf"
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
@@ -104,7 +107,7 @@ export default function Seats(props) {
             required
           ></input>
           <div>
-            <Button>Reservar assento(s)</Button>
+            <Button data-test="book-seat-btn">Reservar assento(s)</Button>
           </div>
         </InputContainer>
       </form>

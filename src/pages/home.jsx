@@ -22,7 +22,7 @@ export default function Home() {
 
       <PosterContainer>
         {movies.map((m) => (
-          <ImgContainer>
+          <ImgContainer data-test="movie" key={m.id}>
             <Link to={`/sessoes/${m.id}`}>
               <img src={m.posterURL} />
             </Link>

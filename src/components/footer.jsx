@@ -4,7 +4,7 @@ export default function Footer(props) {
   const { title, img, day, hour } = props;
 
   return (
-    <FooterContainer>
+    <FooterContainer data-test="footer">
       <ImgContainer>
         <img src={img} />
       </ImgContainer>
@@ -56,5 +56,6 @@ const TextContainer = styled.div`
     text-align: left;
     color: #293845;
     line-height: 30px;
+    width: 300px;
   }
 `;
