@@ -2,12 +2,15 @@ import styled from "styled-components";
 import Footer from "../components/footer";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export default function Seats() {
   const sessions = useParams();
   const [seat, setSeat] = useState(undefined);
-  const [selectedSeat, setSelectedSeat] = useState([]);
+  const [ids, setIds] = useState([]);
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const request = axios.get(
@@ -24,7 +27,19 @@ export default function Seats() {
   }
 
   function clickedSeat(id) {
-    setSelectedSeat([...selectedSeat, id]);
+    setIds([...ids, id]);
+  }
+
+  function buyerData(e) {
+    e.preventDefault();
+    const data = { ids, name, cpf };
+
+    const submit = axios.post(
+      "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",
+      data
+    );
+    submit.then(navigate("/sucesso"));
+    submit.catch((err) => console.log(err.response.data));
   }
 
   return (
@@ -35,11 +50,9 @@ export default function Seats() {
         {seat.seats.map((s) => (
           <Seat
             key={s.id}
-            isAvailable={
-              s.isAvailable && `${selectedSeat.includes(s.id) && "selected"}`
-            }
+            isAvailable={s.isAvailable && `${ids.includes(s.id) && "selected"}`}
             onClick={() => clickedSeat(s.id)}
-            disabled={!s.isAvailable || selectedSeat.includes(s.id)}
+            disabled={!s.isAvailable || ids.includes(s.id)}
           >
             {s.name}
           </Seat>
@@ -61,14 +74,30 @@ export default function Seats() {
         </Subtitle>
       </SubtitleContainer>
 
-      <InputContainer>
-        <p>Nome do comprador:</p>
-        <input placeholder="Digite seu nome..."></input>
-        <p>CPF do comprador:</p>
-        <input placeholder="Digite seu CPF..."></input>
-      </InputContainer>
+      <form onSubmit={buyerData}>
+        <InputContainer>
+          <label htmlFor="name">Nome do comprador:</label>
+          <input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Digite seu nome..."
+            required
+          ></input>
+          <label htmlFor="cpf">CPF do comprador:</label>
+          <input
+            id="cpf"
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
+            placeholder="Digite seu CPF..."
+            required
+          ></input>
+          <div>
+            <Button>Reservar assento(s)</Button>
+          </div>
+        </InputContainer>
+      </form>
 
-      <Button>Reservar assento(s)</Button>
       <Footer
         title={seat.movie.title}
         img={seat.movie.posterURL}
@@ -160,7 +189,7 @@ const Subtitle = styled.div`
 
 const InputContainer = styled.div`
   margin-top: 42px;
-  width: 327px;
+  width: 100%;
 
   input {
     height: 51px;
@@ -175,20 +204,25 @@ const InputContainer = styled.div`
     align-items: center;
     padding-left: 18px;
     border: 1px solid #afafaf;
-    color: #afafaf;
+    color: black;
     margin-top: 3px;
     margin-bottom: 7px;
     box-sizing: border-box;
   }
-  p {
+  label {
     font-family: "Roboto";
     font-size: 18px;
     font-weight: 400;
     line-height: 21px;
     text-align: left;
   }
+  div {
+    display: flex;
+    justify-content: center;
+  }
 `;
-const Button = styled.div`
+const Button = styled.button`
+  border: none;
   margin-top: 57px;
   height: 42px;
   width: 225px;

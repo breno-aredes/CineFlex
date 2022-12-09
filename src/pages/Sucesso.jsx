@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Success() {
   return (
-    <>
+    <Container>
       <H1>Pedido feito com sucesso!</H1>
       <H2>Filme e sessão</H2>
       <H3> filme hora</H3>
@@ -11,9 +11,32 @@ export default function Success() {
       <H2>Comprador</H2>
       <H3>nome cpf</H3>
       <Button>Voltar pra Home</Button>
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  margin-top: 67px;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 374px;
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #293845;
+  }
+`;
 
 const H1 = styled.div`
   display: flex;
