@@ -112,7 +112,7 @@ const Button = styled.div`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: red;
+  background-color: #bc2f2f;
   border-radius: 3px;
   margin-right: 8px;
 `;

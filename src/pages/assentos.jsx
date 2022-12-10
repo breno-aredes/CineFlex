@@ -259,7 +259,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: red;
+  background-color: #bc2f2f;
   border-radius: 3px;
   margin-bottom: 150px;
 `;
