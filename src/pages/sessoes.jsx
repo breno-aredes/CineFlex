@@ -58,6 +58,7 @@ const SessionsContainer = styled.div`
   margin-top: 67px;
   flex-direction: column;
   align-items: center;
+  background-color: #293845;
 
   h1 {
     display: flex;
@@ -71,7 +72,7 @@ const SessionsContainer = styled.div`
     line-height: 28px;
     letter-spacing: 0.04em;
     text-align: center;
-    color: #293845;
+    color: white;
   }
 `;
 
@@ -89,6 +90,7 @@ const DateAndDay = styled.p`
   margin-bottom: 22px;
   width: 375px;
   margin-left: 24px;
+  color: white;
 `;
 
 const ContainerButtons = styled.div`
@@ -110,7 +112,7 @@ const Button = styled.div`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: #e8833a;
+  background-color: red;
   border-radius: 3px;
   margin-right: 8px;
 `;

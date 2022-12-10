@@ -27,6 +27,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color:#293845;
 }
 ol, ul {
 	list-style: none;
@@ -43,6 +44,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

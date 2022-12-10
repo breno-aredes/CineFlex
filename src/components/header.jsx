@@ -22,8 +22,8 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-  background-color: #c3cfd9;
-  color: #e8833a;
+  background-color: black;
+  color: red;
   width: 100%;
   height: 67px;
   text-align: center;
@@ -49,7 +49,7 @@ const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #c3cfd9;
-  color: #e8833a;
+  background-color: black;
+  color: red;
   border: none;
 `;

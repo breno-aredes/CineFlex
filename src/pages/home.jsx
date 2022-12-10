@@ -39,6 +39,7 @@ const BodyContainer = styled.div`
   margin-top: 67px;
   flex-direction: column;
   align-items: center;
+  background-color: #293845;
 
   h1 {
     display: flex;
@@ -52,7 +53,7 @@ const BodyContainer = styled.div`
     line-height: 28px;
     letter-spacing: 0.04em;
     text-align: center;
-    color: #293845;
+    color: white;
   }
 `;
 
@@ -70,7 +71,7 @@ const ImgContainer = styled.div`
   width: 149px;
   height: 209px;
   background-color: #ffffff;
-  box-shadow: 0px 2px 4px 2px #0000001a;
+  box-shadow: 0px 2px 4px 2px black;
   margin-bottom: 11px;
   margin-right: 30px;
   border-radius: 3px;

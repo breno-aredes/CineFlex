@@ -19,8 +19,8 @@ export default function Footer(props) {
 const FooterContainer = styled.div`
   height: 117px;
   width: 100%;
-  background-color: #dfe6ed;
-  border: 1px solid #9eadba;
+  background-color: black;
+  //border: 1px solid white;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@ const TextContainer = styled.div`
     font-weight: 400;
     line-height: 30px;
     text-align: left;
-    color: #293845;
+    color: white;
     line-height: 30px;
     width: 300px;
   }

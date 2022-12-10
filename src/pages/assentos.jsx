@@ -136,6 +136,7 @@ const Container = styled.div`
   margin-top: 67px;
   flex-direction: column;
   align-items: center;
+  background-color: #293845;
 
   h1 {
     display: flex;
@@ -198,7 +199,7 @@ const SubtitleContainer = styled.div`
     font-size: 13px;
     font-weight: 400;
     line-height: 15px;
-    color: #4e5a65;
+    color: white;
     margin-top: -10px;
   }
 `;
@@ -237,6 +238,7 @@ const InputContainer = styled.div`
     font-weight: 400;
     line-height: 21px;
     text-align: left;
+    color: white;
   }
   div {
     display: flex;
@@ -257,7 +259,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: #e8833a;
+  background-color: red;
   border-radius: 3px;
   margin-bottom: 150px;
 `;

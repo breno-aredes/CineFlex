@@ -46,20 +46,7 @@ const Container = styled.div`
   margin-top: 67px;
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 110px;
-    width: 374px;
-    font-family: "Roboto", sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.04em;
-    text-align: center;
-    color: #293845;
+  background-color: #293845;
   }
 `;
 
@@ -75,7 +62,7 @@ const H1 = styled.div`
   letter-spacing: 0.04em;
   font-size: 24px;
   text-align: center;
-  color: #247a6b;
+  color: #bc2f2f;
 `;
 
 const H2 = styled.h2`
@@ -88,7 +75,7 @@ const H2 = styled.h2`
   text-align: left;
   margin-left: 30px;
   margin-top: 30px;
-  color: #293845;
+  color: white;
 `;
 
 const H3 = styled.h3`
@@ -101,7 +88,7 @@ const H3 = styled.h3`
   font-size: 22px;
   font-weight: 400;
   line-height: 26px;
-  color: #293845;
+  color: white;
 `;
 const Button = styled.button`
   border: none;
@@ -117,6 +104,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: #e8833a;
+  background-color: red;
   border-radius: 3px;
+  margin-bottom: 150px;
 `;
