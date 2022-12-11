@@ -150,7 +150,7 @@ const Container = styled.div`
     line-height: 28px;
     letter-spacing: 0.04em;
     text-align: center;
-    color: #293845;
+    color: white;
   }
 `;
 
@@ -250,7 +250,7 @@ const Button = styled.button`
   margin-top: 57px;
   height: 42px;
   width: 225px;
-  font-family: Roboto;
+  font-family: "Roboto";
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
